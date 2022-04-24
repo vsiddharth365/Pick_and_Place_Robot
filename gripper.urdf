@@ -1,0 +1,170 @@
+<robot name="sample">
+
+<link name="base">
+    <visual>
+        <origin xyz ="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.05 0.05 2"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.3 0.3 0.3 1.0"/>
+        </material>
+    </visual>
+    <collision>
+        <origin xyz ="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.05 0.05 2"/>
+        </geometry>
+    </collision>
+</link>
+
+<link name="link1">
+    <visual>
+        <origin xyz ="0 0 0" rpy="0 1.57 0"/>
+        <geometry>
+            <box size="0.05 0.05 15"/>
+        </geometry>
+        <material name="red">
+            <color rgba="0.9 0.3 0.3 1.0"/>
+        </material>
+    </visual>
+    <collision>
+        <origin xyz ="0 0 0" rpy="0 1.57 0"/>
+        <geometry>
+            <box size="0.05 0.05 15"/>
+        </geometry>
+        <material name="red">
+            <color rgba="0.9 0.3 0.3 1.0"/>
+        </material>
+    </collision>
+</link>
+
+<link name="link2">
+    <visual>
+        <origin xyz ="0 0 0" rpy="1.57 0 0"/>
+        <geometry>
+            <box size="0.05 0.05 15"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.3 0.3 0.3 1.0"/>
+        </material>
+    </visual>
+    <collision>
+        <origin xyz ="0 0 0" rpy="1.57 0 0"/>
+        <geometry>
+            <box size="0.05 0.05 15"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.3 0.3 0.3 1.0"/>
+        </material>
+    </collision>
+</link>
+
+<link name="link3">
+    <visual>
+        <origin xyz ="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.05 0.05 1"/>
+        </geometry>
+        <material name="red">
+            <color rgba="0.9 0.3 0.3 1.0"/>
+        </material>
+    </visual>
+    <collision>
+        <origin xyz ="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.05 0.05 1"/>
+        </geometry>
+        <material name="red">
+            <color rgba="0.9 0.3 0.3 1.0"/>
+        </material>
+    </collision>
+</link>
+
+<link name="link4">
+    <visual>
+        <origin xyz ="0 0.05 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.02 0.15 0.02"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.3 0.3 0.3 1.0"/>
+        </material>
+    </visual>
+    <collision>
+        <origin xyz ="0 0.05 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.02 0.15 0.02"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.3 0.3 0.3 1.0"/>
+        </material>
+    </collision>
+</link>
+
+<link name="link5">
+    <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <box size="0.02 0.01 0.02"/>
+        </geometry>
+        <material name="red">
+            <color rgba="0.9 0.3 0.3 1.0"/>
+        </material>
+    </visual>
+    <collision>
+        <origin xyz ="0 0.0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.02 0.01 0.02"/>
+        </geometry>
+        <material name="red">
+            <color rgba="0.9 0.3 0.3 1.0"/>
+        </material>
+    </collision> 
+</link>
+
+<joint name="bl1" type="prismatic">
+    <limit lower="-10" upper="10" effort="10" velocity="1"/>
+	<axis xyz="1 0 0"/>
+	<origin xyz ="0 0 1" rpy="0 0 0"/>
+	<parent link ="base"/>
+	<child link ="link1"/>
+    <dynamics damping="25.0"/>
+</joint>
+
+<joint name="l1l2" type="prismatic">
+    <limit lower="-10" upper="10" effort="10" velocity="1"/>
+	<axis xyz="0 1 0"/>
+	<origin xyz ="7.5 0 0" rpy="0 0 0"/>
+	<parent link ="link1"/>
+	<child link ="link2"/>
+    <dynamics damping="25.0"/>
+</joint>
+
+<joint name="l2l3" type="prismatic">
+    <limit lower="-10" upper="10" effort="10" velocity="1"/>
+	<axis xyz="0 0 1"/>
+	<origin xyz ="0 7.5 0" rpy="0 0 0"/>
+	<parent link ="link2"/>
+	<child link ="link3"/>
+    <dynamics damping="25.0"/>
+</joint>
+
+<joint name="l3l4" type="prismatic">
+    <limit lower="-0.5" upper="0.5" effort="10" velocity="1"/>
+	<axis xyz="0 1 0"/>
+	<origin xyz ="0 -0.1 -0.5" rpy="0 0 0"/>
+	<parent link ="link3"/>
+	<child link ="link4"/>
+    <dynamics damping="25.0"/>
+</joint>
+
+<joint name="l4l5" type="prismatic">
+    <limit lower="-0.5" upper="0.5" effort="10" velocity="1"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <origin xyz="0.0 0.101 0.0"/>
+    <parent link="link4"/>
+    <child link="link5"/>
+</joint>
+
+</robot>
