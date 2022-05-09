@@ -1,0 +1,93 @@
+<robot name="cube">
+    <material name="pink">
+        <color rgba="1.0 0.0 1.0 1.0"/>
+    </material>
+
+    <link name="base">
+        <visual>
+            <origin xyz ="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.1 0.035"/>
+            </geometry>
+            <material name="pink"/>
+        </visual>
+        <collision>
+            <origin xyz ="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.1 0.035"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="left">
+        <visual>
+            <origin xyz ="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.035 0.1 0.03"/>
+            </geometry>
+            <material name="pink"/>
+        </visual>
+        <collision>
+            <origin xyz ="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.035 0.1 0.03"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="right">
+        <visual>
+            <origin xyz ="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.035 0.1 0.03"/>
+            </geometry>
+            <material name="pink"/>
+        </visual>
+        <collision>
+            <origin xyz ="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.035 0.1 0.03"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="top">
+        <visual>
+            <origin xyz ="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.1 0.035"/>
+            </geometry>
+            <material name="pink"/>
+        </visual>
+        <collision>
+            <origin xyz ="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.1 0.035"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="bl" type="fixed">
+        <limit lower="0" upper="0" effort="10" velocity="1"/>
+        <axis xyz="0 0 0"/>
+        <origin xyz ="0.0325 0 0.0325" rpy="0 0 0"/>
+        <parent link ="base"/>
+        <child link ="left"/>
+    </joint>
+
+    <joint name="br" type="fixed">
+        <limit lower="0" upper="0" effort="10" velocity="1"/>
+        <axis xyz="0 0 0"/>
+        <origin xyz ="-0.0325 0 0.0325" rpy="0 0 0"/>
+        <parent link ="base"/>
+        <child link ="right"/>
+    </joint>
+
+    <joint name="rt" type="fixed">
+        <limit lower="0" upper="0" effort="10" velocity="1"/>
+        <axis xyz="0 0 0"/>
+        <origin xyz ="0.0325 0 0.0325" rpy="0 0 0"/>
+        <parent link ="right"/>
+        <child link ="top"/>
+    </joint>
+</robot>
